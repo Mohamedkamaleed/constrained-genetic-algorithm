@@ -217,46 +217,44 @@ Each implementation runs **100 independent trials** per problem and reports:
 ## 📈 Performance Validation
 
 ### Implementation Comparison: JavaScript vs MATLAB
-Winner |
+
+| Metric | JavaScript | MATLAB | Winner |
 |--------|------------|--------|--------|
 | **Success Rate** | 90% (9/10) | 80% (8/10) | ✅ JavaScript |
 | **Perfect Matches** | 60% (6/10) | 50% (5/10) | ✅ JavaScript |
 | **Superior Results** | 10% (1/10) | 10% (1/10) | 🤝 Tie |
 | **Average Test Time** | ~25 min | ~30 min | ✅ JavaScript |
-| **Correct SALKIN** | ✅ 320.0000 | ❌ 80.0000 | ✅ JavaScript
-|--------|------------|--------|-------------|
-| **Success Rate** | TBD | 80% (8/10) | Problems with < 1% error |
-| **Perfect Matches** | TBD | 50% (5/10) | Exact or near-exact solutions |
-| **Superior Results** | TBD | 10% (1/10) | Better than paper benchmarks |
-| **Average Test Time** | ~25 min | ~30 min | For all 10 problems, 100 runs each |
+| **Correct SALKIN** | ✅ 320.0000 | ❌ 80.0000 | ✅ JavaScript |
 
 #### Detailed Benchmark Results
 
 ##### ✅ Excellent Performance (Both Implementations)
 
 | Problem | Paper Best | JS Best | MATLAB Best | Paper Mean | JS Mean | MATLAB Mean | Status |
-|---------|-------------1.8730 | -1.8730 | -1.8730 | -1.8730 | -1.8730 | ✅ Perfect (both) |
+|---------|------------|---------|-------------|------------|---------|-------------|--------|
+| **LEVY** | -1.8730 | -1.8730 | -1.8730 | -1.8730 | -1.8730 | -1.8730 | ✅ Perfect (both) |
 | **HIMMELBLAU** | 0.01561 | 0.01562 | 0.01562 | 0.01563 | 0.01562 | 0.01562 | ✅ Excellent (both) |
 | **LIN1** | 0.2500 | 0.2500 | 0.2500 | 0.2500 | 0.2500 | 0.2500 | ✅ Perfect (both) |
 | **SHITTKOWSKI** | 13.5907 | 13.5908 | 13.5908 | 13.5937 | 13.6010 | 13.5972 | ✅ Perfect (both) |
 | **LIN2** | -5.5080 | -5.5080 | -5.5080 | -5.5080 | -5.5058 | -5.5064 | ✅ Perfect (both) |
 | **LIN3** | 5.0000 | 5.0000 | 5.0000 | 5.0010 | 5.0035 | 5.0031 | ✅ Perfect (both) |
 | **G15** | 961.7151 | 961.7149 | 961.7132 | 961.7152 | 964.0598 | 964.6675 | ✅ Excellent (both) |
-| **SALKIN** | 320.0000 | **320.0000** | ❌ 80.0000 | 320.0000 | 319.6631 | 80.0000 | ✅ JS only
-| **G15** | 961.7151 | TBD | 961.7132 | 961.7152 | TBD | 964.6675 | ✅ Excellent |
+| **SALKIN** | 320.0000 | **320.0000** | ❌ 80.0000 | 320.0000 | 319.6631 | 80.0000 | ✅ JS only |
 
-##### 🎉 Superior PerformJS Best | MATLAB Best | Improvement | Note |
+##### 🎉 Superior Performance
+
+| Problem | Paper Best | JS Best | MATLAB Best | Improvement | Note |
 |---------|------------|---------|-------------|-------------|------|
-| **CHOOTINAN1** | -15.0000 | -19.0000 | -19.0000 | +26.7% | 🎉 Both implementations found better
-|---------|------------|-------------|-------------|------|
-| **CHOOTINAN1** | -15.0000 | -19.0000 | +26.7% | 🎉 MATLAB found better global optimum |
+| **CHOOTINAN1** | -15.0000 | -19.0000 | -19.0000 | +26.7% | 🎉 Both implementations found better optimum |
 
-##### ⚠️ Known IssuesJS Best | MATLAB Best | Status | Note |
+##### ⚠️ Known Issues
+
+| Problem | Paper Best | JS Best | MATLAB Best | Status | Note |
 |---------|------------|---------|-------------|--------|------|
 | **SALKIN** | 320.0000 | ✅ 320.0000 | ❌ 80.0000 | Fixed in JS | MATLAB objective function has bug |
-| **BEAM** | 1.7259 | 2.1840 | 2.1750 | ⚠️ Both affected | Constraint formulation needs review
-| **SALKIN** | 320.0000 | 80.0000 | ⚠️ Under investigation | Objective function verification needed |
-| **Complete Implementation Results Comparison
+| **BEAM** | 1.7259 | 2.1840 | 2.1750 | ⚠️ Both affected | Constraint formulation needs review |
+
+### Complete Implementation Results Comparison
 
 | Problem | Paper Evals | JS Evals | MATLAB Evals | Paper Best | JS Best | MATLAB Best | Paper Std | JS Std | MATLAB Std | Accuracy |
 |---------|-------------|----------|--------------|------------|---------|-------------|-----------|--------|------------|----------|
@@ -269,12 +267,11 @@ Winner |
 | **LIN2** | 2,431 | 15,878 | 16,652 | -5.5080 | -5.5080 | -5.5080 | 2.17e-01 | 6.16e-03 | 3.80e-03 | ✅ Both perfect |
 | **G15** | 3,593 | 33,923 | 24,490 | 961.7151 | 961.7149 | 961.7132 | 1.88e-05 | 2.82e+00 | 2.81e+00 | ✅ Both excellent |
 | **LIN3** | 15,516 | 37,306 | 38,937 | 5.0000 | 5.0000 | 5.0000 | 2.78e-03 | 9.48e-03 | 7.01e-03 | ✅ Both perfect |
-| **BEAM** | 5,608 | 11,796 | 11,416 | 1.7259 | 2.1840 | 2.1750 | 3.30e-05 | 1.87e-01 | 1.80e-01 | ⚠️ Both have issuerror |
-| **LIN3** | 15,516 | 38,937 | 5.0000 | 5.0000 | 2.78e-03 | 7.01e-03 | 0.00% error |
-| **BEAM** | 5,608 | 11,416 | 1.7259 | 2.1750 | 3.30e-05 | 1.80e-01 | +26% (issue) |
+| **BEAM** | 5,608 | 11,796 | 11,416 | 1.7259 | 2.1840 | 2.1750 | 3.30e-05 | 1.87e-01 | 1.80e-01 | ⚠️ Both have issue |
 
 ### Key Observations
-JavaScript Implementation Highlights
+
+#### JavaScript Implementation Highlights
 - ✅ **9 out of 10 problems** solved with < 1% error (90% success rate)
 - ✅ **6 perfect matches** (LEVY, SALKIN, LIN1, LIN2, LIN3, SHITTKOWSKI)
 - ✅ **Correctly solved SALKIN** (320.0000) - MATLAB got it wrong (80.0000)
@@ -296,8 +293,7 @@ JavaScript implementation demonstrates superior overall performance with:
 - **Higher accuracy** (90% vs 80% success rate)
 - **Faster execution** (25 min vs 30 min)
 - **Correct SALKIN solution** (MATLAB has implementation bug)
-- **More efficient** on several benchmarks0)
-- ⚠️ **2 issues** requiring investigation (SALKIN, BEAM)
+- **More efficient** on several benchmarks
 
 *Full results and implementation details available in each language's documentation*
 
