@@ -40,31 +40,13 @@ results = struct('name', {}, 'paperEvals', {}, 'localEvals', {}, ...
 % Run each test
 for i = 1:length(problems)
     problem = problems{i};
-    problemName = problem.name;  % Store name for catch block
+    problemName = problem.name;
     fprintf('Running 100 iterations of %s...\n', problemName);
     
     try
-        % Capture diary output
-        diary_file = [tempname '.txt'];
-        diary(diary_file);
-        diary on;
-        
-        % Run the test
-        run(problem.file);
-        
-        diary off;
-        
-        % Read the output to extract results
-        fid = fopen(diary_file, 'r');
-        output = fread(fid, '*char')';
-        fclose(fid);
-        delete(diary_file);
-        
-        % Parse results from output
-        localEvals = extractMetric(output, 'FEVALS');
-        localBest = extractMetric(output, 'BEST');
-        localMean = extractMetric(output, 'MEAN');
-        localStd = extractMetric(output, 'STD');
+        % Call the test function directly
+        testFunc = str2func(problem.file);
+        [localEvals, localBest, localMean, localStd] = testFunc();
         
         % Store results
         results(i).name = problemName;
@@ -112,14 +94,3 @@ end
 fprintf('=======================================================================================================\n\n');
 
 fprintf('Benchmark suite completed successfully!\n');
-
-% Helper function to extract metrics from output text
-function value = extractMetric(text, metric)
-    pattern = [metric '\s+\|\s+[\d\.\-e]+\s+\|\s+([\d\.\-e]+)'];
-    tokens = regexp(text, pattern, 'tokens');
-    if ~isempty(tokens)
-        value = str2double(tokens{1}{1});
-    else
-        value = NaN;
-    end
-end

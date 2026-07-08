@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testSalkin()
 % SALKIN Problem Test
-
-clear; clc;
 
 % Define objective function
 salkinObjective = @(x) -5*x(1) - 5*x(2) - 5*x(3) - 5*x(4) + 100;
@@ -53,3 +52,11 @@ fprintf('BEST         |  320.0000            | %.4f\n', bestValue);
 fprintf('MEAN         |  320.0000            | %.4f\n', meanValue);
 fprintf('STD          |  0.0                 | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

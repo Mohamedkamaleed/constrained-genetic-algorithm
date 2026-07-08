@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testBeam()
 % BEAM (Welded Beam Design) Problem Test
-
-clear; clc;
 
 % Constants
 P = 6000; L = 14; E = 30e6; G = 12e6;
@@ -68,7 +67,15 @@ fprintf('STD          |  3.30e-5             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
 
 % Helper functions for beam constraints
-function val = beamG1(x, P, L, E, G)
+fuReturn values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end
+
+% nction val = beamG1(x, P, L, E, G)
     M = P * (L + x(2) / 2.0);
     R = sqrt((x(2)^2 / 4.0) + ((x(1) + x(3)) / 2.0)^2);
     J = 2 * (sqrt(2) * x(1) * x(2) * (x(2)^2 / 12.0 + ((x(1) + x(3)) / 2.0)^2));

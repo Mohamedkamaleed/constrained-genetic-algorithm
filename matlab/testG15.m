@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testG15()
 % G15 Problem Test
-
-clear; clc;
 
 % Define objective function
 g15Objective = @(x) 1000 - x(1)^2 - 2*x(2)^2 - x(3)^2 - x(1)*x(2) - x(1)*x(3);
@@ -53,3 +52,11 @@ fprintf('BEST         |  961.71515           | %.5f\n', bestValue);
 fprintf('MEAN         |  961.71516           | %.5f\n', meanValue);
 fprintf('STD          |  1.88e-5             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testChootinan1()
 % CHOOTINAN1 Problem Test
-
-clear; clc;
 
 % Define objective function
 chootinan1Objective = @(x) chootinanObj(x);
@@ -74,6 +73,14 @@ fprintf('BEST         |  -15.0000            | %.4f\n', bestValue);
 fprintf('MEAN         |  -14.9999            | %.4f\n', meanValue);
 fprintf('STD          |  7.59e-3             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end
 
 % Helper function for Chootinan1 objective
 function val = chootinanObj(x)

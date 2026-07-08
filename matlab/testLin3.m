@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testLin3()
 % LIN3 Problem Test
-
-clear; clc;
 
 % Define objective function
 lin3Objective = @(x) 0.01 * x(1)^2 + x(2)^2;
@@ -53,3 +52,11 @@ fprintf('BEST         |  5.0000              | %.4f\n', bestValue);
 fprintf('MEAN         |  5.0010              | %.4f\n', meanValue);
 fprintf('STD          |  2.78e-3             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

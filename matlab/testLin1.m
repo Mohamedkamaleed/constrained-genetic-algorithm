@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testLin1()
 % LIN1 Problem Test
-
-clear; clc;
 
 % Define objective function
 lin1Objective = @(x) 100 * (x(2) - x(1)^2)^2 + (1 - x(1))^2;
@@ -53,3 +52,11 @@ fprintf('BEST         |  0.2500              | %.4f\n', bestValue);
 fprintf('MEAN         |  0.2500              | %.4f\n', meanValue);
 fprintf('STD          |  6.78e-7             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

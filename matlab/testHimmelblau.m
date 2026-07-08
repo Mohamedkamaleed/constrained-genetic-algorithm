@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testHimmelblau()
 % HIMMELBLAU Problem Test
-
-clear; clc;
 
 % Define objective function
 himmelblauObjective = @(x) 4.3*x(1) + 31.8*x(2) + 63.3*x(3) + 15.8*x(4) + 68.5*x(5) + 4.7*x(6);
@@ -70,3 +69,11 @@ fprintf('BEST         |  0.01561             | %.5f\n', bestValue);
 fprintf('MEAN         |  0.01563             | %.5f\n', meanValue);
 fprintf('STD          |  5.71e-5             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

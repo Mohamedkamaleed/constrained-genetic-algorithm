@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testLin2()
 % LIN2 Problem Test
-
-clear; clc;
 
 % Define objective function
 lin2Objective = @(x) -x(1) - x(2);
@@ -53,3 +52,11 @@ fprintf('BEST         |  -5.5080             | %.4f\n', bestValue);
 fprintf('MEAN         |  -5.5080             | %.4f\n', meanValue);
 fprintf('STD          |  2.17e-1             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

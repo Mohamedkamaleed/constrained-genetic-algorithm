@@ -1,6 +1,5 @@
+function [fevals, best, meanVal, stdVal] = testShittkowski()
 % SHITTKOWSKI Problem Test
-
-clear; clc;
 
 % Define objective function
 shittkowskiObjective = @(x) (x(1)^2 + x(2) - 11)^2 + (x(1) + x(2)^2 - 7)^2;
@@ -53,3 +52,11 @@ fprintf('BEST         |  13.5907             | %.4f\n', bestValue);
 fprintf('MEAN         |  13.5937             | %.4f\n', meanValue);
 fprintf('STD          |  6.61e-3             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end

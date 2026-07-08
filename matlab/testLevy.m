@@ -1,7 +1,6 @@
+function [fevals, best, meanVal, stdVal] = testLevy()
 % LEVY Problem Test
 % Section 3.1: LEVY Problem Setup
-
-clear; clc;
 
 % Define objective function
 levyObjective = @(x) -x(1) - x(2);
@@ -53,6 +52,14 @@ fprintf('BEST         |  -1.8730             | %.4f\n', bestValue);
 fprintf('MEAN         |  -1.8730             | %.4f\n', meanValue);
 fprintf('STD          |  4.82e-6             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
+
+% Return values
+fevals = round(avgFevals);
+best = bestValue;
+meanVal = meanValue;
+stdVal = stdDeviation;
+
+end
 
 % Helper function for LEVY constraint
 function val = levyConstraintFunc(x)
