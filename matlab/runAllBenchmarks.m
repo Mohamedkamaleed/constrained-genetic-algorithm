@@ -40,7 +40,8 @@ results = struct('name', {}, 'paperEvals', {}, 'localEvals', {}, ...
 % Run each test
 for i = 1:length(problems)
     problem = problems{i};
-    fprintf('Running 100 iterations of %s...\n', problem.name);
+    problemName = problem.name;  % Store name for catch block
+    fprintf('Running 100 iterations of %s...\n', problemName);
     
     try
         % Capture diary output
@@ -66,7 +67,7 @@ for i = 1:length(problems)
         localStd = extractMetric(output, 'STD');
         
         % Store results
-        results(i).name = problem.name;
+        results(i).name = problemName;
         results(i).paperEvals = problem.paperEvals;
         results(i).localEvals = localEvals;
         results(i).paperBest = problem.paperBest;
@@ -76,10 +77,20 @@ for i = 1:length(problems)
         results(i).paperStd = problem.paperStd;
         results(i).localStd = localStd;
         
-        fprintf('✓ Completed %s\n\n', problem.name);
+        fprintf('✓ Completed %s\n\n', problemName);
         
     catch ME
-        fprintf('✗ Error running %s: %s\n\n', problem.name, ME.message);
+        fprintf('✗ Error running %s: %s\n\n', problemName, ME.message);
+        % Still store partial results
+        results(i).name = problemName;
+        results(i).paperEvals = problem.paperEvals;
+        results(i).localEvals = NaN;
+        results(i).paperBest = problem.paperBest;
+        results(i).localBest = NaN;
+        results(i).paperMean = problem.paperMean;
+        results(i).localMean = NaN;
+        results(i).paperStd = problem.paperStd;
+        results(i).localStd = NaN;
     end
 end
 
