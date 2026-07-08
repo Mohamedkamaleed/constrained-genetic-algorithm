@@ -66,8 +66,7 @@ fprintf('MEAN         |  1.725937            | %.6f\n', meanValue);
 fprintf('STD          |  3.30e-5             | %.2e\n', stdDeviation);
 fprintf('=======================================================\n');
 
-% Helper functions for beam constraints
-fuReturn values
+% Return values
 fevals = round(avgFevals);
 best = bestValue;
 meanVal = meanValue;
@@ -75,7 +74,8 @@ stdVal = stdDeviation;
 
 end
 
-% nction val = beamG1(x, P, L, E, G)
+% Helper functions for beam constraints
+function val = beamG1(x, P, L, E, G)
     M = P * (L + x(2) / 2.0);
     R = sqrt((x(2)^2 / 4.0) + ((x(1) + x(3)) / 2.0)^2);
     J = 2 * (sqrt(2) * x(1) * x(2) * (x(2)^2 / 12.0 + ((x(1) + x(3)) / 2.0)^2));
